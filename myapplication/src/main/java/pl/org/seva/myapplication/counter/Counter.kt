@@ -21,7 +21,6 @@ package pl.org.seva.myapplication.counter
 
 import android.os.AsyncTask
 import androidx.lifecycle.MutableLiveData
-import java.text.BreakIterator
 
 class Counter() : AsyncTask<Int, Int, Int>() {
 
