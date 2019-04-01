@@ -17,20 +17,18 @@
  * If you like this program, consider donating bitcoin: bc1qncxh5xs6erq6w4qz3a7xl7f50agrgn3w58dsfp
  */
 
-package pl.org.seva.myapplication.main
+package pl.org.seva.myapplication.main.extension
 
-import android.app.Application
-import org.kodein.di.Kodein
-import org.kodein.di.conf.global
+import android.graphics.Typeface
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.StyleSpan
 
-@Suppress("unused")
-class MyApplication : Application() {
-    init {
-        Kodein.global.addImport(module)
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-        bootstrap.boot()
+fun String.bold(placeholder: String, replacement: String): CharSequence {
+    val idName = indexOf(placeholder)
+    val idEndName = idName + replacement.length
+    val boldSpan = StyleSpan(Typeface.BOLD)
+    return SpannableStringBuilder(replace(placeholder, replacement)).apply {
+        setSpan(boldSpan, idName, idEndName, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
     }
 }

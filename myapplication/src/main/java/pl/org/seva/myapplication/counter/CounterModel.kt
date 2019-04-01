@@ -17,20 +17,14 @@
  * If you like this program, consider donating bitcoin: bc1qncxh5xs6erq6w4qz3a7xl7f50agrgn3w58dsfp
  */
 
-package pl.org.seva.myapplication.main
+package pl.org.seva.myapplication.counter
 
-import android.app.Application
-import org.kodein.di.Kodein
-import org.kodein.di.conf.global
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
-@Suppress("unused")
-class MyApplication : Application() {
-    init {
-        Kodein.global.addImport(module)
-    }
+class CounterModel : ViewModel() {
+    val progress by lazy { MutableLiveData<Int>() }
+    val result by lazy { MutableLiveData<Int>() }
 
-    override fun onCreate() {
-        super.onCreate()
-        bootstrap.boot()
-    }
+    var isAsyncTaskRunning = false
 }

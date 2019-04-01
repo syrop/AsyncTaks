@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+
+    <!-- Counter fragment -->
+    <string name="counter_fragment_progress">Progress: [progress]</string>
+    <string name="counter_fragment_result">Result: [result]</string>
 </resources>
