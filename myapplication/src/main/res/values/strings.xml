@@ -4,4 +4,5 @@
     <!-- Counter fragment -->
     <string name="counter_fragment_progress">Progress: [progress]</string>
     <string name="counter_fragment_result">Result: [result]</string>
+    <string name="counter_fragment_cancel">Cancel</string>
 </resources>

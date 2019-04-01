@@ -21,6 +21,7 @@ package pl.org.seva.myapplication.counter
 
 import android.os.AsyncTask
 import androidx.lifecycle.MutableLiveData
+import java.text.BreakIterator
 
 class Counter() : AsyncTask<Int, Int, Int>() {
 
@@ -35,6 +36,9 @@ class Counter() : AsyncTask<Int, Int, Int>() {
     override fun doInBackground(vararg params: Int?): Int {
         val repetitions = params[0]!!
         repeat(repetitions) {
+            if (isCancelled) {
+                return@repeat
+            }
             publishProgress(it)
             Thread.sleep(1000L)
         }

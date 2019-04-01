@@ -23,8 +23,26 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class CounterModel : ViewModel() {
+
     val progress by lazy { MutableLiveData<Int>() }
     val result by lazy { MutableLiveData<Int>() }
 
-    var isAsyncTaskRunning = false
+    private val task = Counter.build {
+        progress = this@CounterModel.progress
+        result = this@CounterModel.result
+    }
+
+    init {
+         task.execute(REPETITIONS)
+    }
+
+    fun cancel() = task.cancel(false)
+
+    override fun onCleared() {
+        cancel()
+    }
+
+    companion object {
+        const val REPETITIONS = 10
+    }
 }

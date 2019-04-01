@@ -50,20 +50,11 @@ class CounterFragment : Fragment() {
             result.text = getString(R.string.counter_fragment_result)
                     .bold(RESULT, it.toString())
         }
-
-        if (!vm.isAsyncTaskRunning) {
-            val counter = Counter.build {
-                progress = vm.progress
-                result = vm.result
-            }
-            vm.isAsyncTaskRunning = true
-            counter.execute(REPETITIONS)
-        }
+        cancel.setOnClickListener { vm.cancel() }
     }
 
     companion object {
         const val PROGRESS = "[progress]"
         const val RESULT = "[result]"
-        const val REPETITIONS = 10
     }
 }
